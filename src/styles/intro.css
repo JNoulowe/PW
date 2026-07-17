@@ -1,0 +1,86 @@
+/* ============================================================
+   Home — Matchday Programme / broadcast cold-open
+   ============================================================ */
+
+.intro { min-height: 100vh; display: flex; flex-direction: column; }
+.intro .wrap { width: 100%; }
+
+/* ---- fixture / score-bug strip ---- */
+.fixturebar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 9px 22px;
+  padding: 16px 0; border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(36px, 6vh, 80px);
+}
+.fixturebar .fb {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ink-2);
+}
+.fixturebar .fb.strong { color: var(--ink); }
+.live { display: inline-flex; align-items: center; gap: 8px; }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: #cf4b3b; }
+@media (prefers-reduced-motion: no-preference) {
+  .live-dot { animation: livepulse 2.2s ease-in-out infinite; }
+  @keyframes livepulse { 0%,100% { box-shadow: 0 0 0 0 rgba(207,75,59,.5);} 50% { box-shadow: 0 0 0 6px rgba(207,75,59,0);} }
+}
+.fixturebar .sep { color: var(--hair); }
+
+/* ---- hero lockup ---- */
+.intro-hero { padding-bottom: clamp(20px, 4vh, 48px); }
+.intro-kicker { margin-bottom: 22px; }
+.intro-name {
+  font-family: var(--display); font-weight: 900;
+  font-size: clamp(2.9rem, 11.5vw, 9.2rem);
+  line-height: .82; letter-spacing: -0.035em;
+}
+.intro-name .ln { display: block; }
+.intro-role {
+  font-family: var(--mono); font-size: clamp(.72rem, 1.1vw, .82rem);
+  letter-spacing: .18em; text-transform: uppercase; color: var(--ink-2);
+  margin-top: 26px; line-height: 1.8;
+}
+.mnote {
+  margin-top: clamp(28px, 4vh, 44px);
+  max-width: 30ch;
+  font-size: clamp(1.2rem, 2.1vw, 1.7rem);
+  line-height: 1.42; font-weight: 500; letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+.mnote.wide { max-width: 46ch; }
+.mnote .gold { color: var(--gold-deep); }
+.mnote .quietquote { font-style: italic; color: var(--ink); }
+
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: clamp(28px, 4vh, 40px); }
+
+/* ---- coverage rundown ---- */
+.coverage { margin-top: clamp(54px, 9vh, 120px); padding-bottom: clamp(20px,4vh,40px); }
+.coverage-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
+
+.rundown { list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.rundown > li > a {
+  display: grid; grid-template-columns: auto 1fr auto;
+  align-items: center; gap: clamp(16px, 3vw, 46px);
+  padding: clamp(20px, 3vh, 30px) 6px;
+  border-bottom: 1px solid var(--line);
+  transition: padding-left .3s var(--ease), background .3s var(--ease);
+}
+.rundown > li > a:hover { padding-left: 20px; background: linear-gradient(90deg, var(--line-2), transparent 60%); }
+.run-num {
+  font-family: var(--display); font-weight: 900; font-variant-numeric: tabular-nums;
+  font-size: clamp(1.5rem, 3.4vw, 2.6rem); letter-spacing: -0.02em;
+  color: var(--hair); transition: color .3s var(--ease);
+  min-width: 1.6em;
+}
+.rundown > li > a:hover .run-num { color: var(--gold-deep); }
+.run-main { display: flex; flex-direction: column; }
+.run-main .rt { font-weight: 800; font-size: clamp(1.3rem, 2.7vw, 2.05rem); letter-spacing: -0.015em; line-height: 1.05; }
+.run-main .rd { color: var(--ink-2); margin-top: 7px; font-size: clamp(.92rem, 1.3vw, 1.02rem); line-height: 1.4; max-width: 52ch; }
+.run-meta { display: inline-flex; align-items: center; gap: 14px; }
+.run-tag { font-family: var(--mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+.run-arrow { color: var(--hair); font-size: 1.4rem; transition: transform .3s var(--cut), color .3s var(--ease); }
+.rundown > li > a:hover .run-arrow { color: var(--gold-deep); transform: translateX(5px); }
+
+@media (max-width: 720px) {
+  .rundown > li > a { grid-template-columns: auto 1fr; gap: 16px 18px; }
+  .run-meta { display: none; }
+  .run-main .rd { max-width: none; }
+}
